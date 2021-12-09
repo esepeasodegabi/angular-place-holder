@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-title>{{postDetail.post.title}}</mat-card-title>
+    <mat-card-subtitle>
+        <div fxLayout="column" fxLayoutAlign="space-evenly stretch">
+            <div>{{postDetail.post.body}}</div>
+            <div><b>{{postDetail.author?.name}}</b></div>
+            <div>{{postDetail.author?.email}}, {{postDetail.author?.phone}}</div>
+            <div>{{postDetail.author?.address.zipcode}}, {{postDetail.author?.address.city}}</div>
+        </div>
+        <div [hidden]="viewComments">
+            <div  *ngFor="let comment of postDetail.comments" >
+                <div class="mt-30">
+                    {{comment.body}}
+                </div>
+                <div align="end">{{comment.name}}, <b>{{comment.email}}</b></div>
+                <mat-divider ></mat-divider>
+            </div>
+        </div>
+    </mat-card-subtitle>
+
+    <mat-card-actions>
+        <button mat-button matBadge={{postDetail.comments?.length}} (click)="viewOrHideComments()">
+            <span [hidden]="!viewComments">Ver comentarios</span>
+            <span [hidden]="viewComments">Ocultar comentarios</span>
+        </button>
+    </mat-card-actions>
+</mat-card>

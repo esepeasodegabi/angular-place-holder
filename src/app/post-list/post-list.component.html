@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="end center" >
+    <button mat-button color="primary" class="mtb-20" [routerLink]="['/new']">Añadir Post</button>
+</div>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field appearance="fill">
+        <mat-label>Seleccionar</mat-label>
+        <mat-select  (selectionChange)="selectUser($event.value)">
+            <mat-option [value] = 0>Todos</mat-option>
+            <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div  fxFlex fxLayout.lt-md="column" fxLayout="row wrap" fxLayoutAlign="space-around stretch"  fxLayoutGap="20px">
+    <mat-card *ngFor="let post of postsDisplayed" [fxFlex]="20" fxFlex class="mtb-20"  fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-card-title [fxFlex] >{{post.title}}</mat-card-title>
+        <mat-card-subtitle [fxFlex]>{{post.body}}</mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-button color="warn" [routerLink]="['/edit', post.id]">Editar</button>
+            <button mat-button color="primary" [routerLink]="['/detail', post.id]">Detalles</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,27 @@
+
+<form [formGroup]="postForm" (submit)="submit()" class="mt-20">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="50" appearance="fill">
+            <mat-label>Autor</mat-label>
+            <mat-select formControlName="author">
+                <mat-option value="0">Todos</mat-option>
+                <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="50" appearance="fill">
+            <mat-label>Título</mat-label>
+            <input formControlName="title" matInput placeholder="El título definitivo..." value="">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field  fxFlex="50" appearance="fill">
+            <mat-label>Post</mat-label>
+            <textarea formControlName="post" matInput placeholder="Ejemplo... loremm ipsum"></textarea>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button fxFlex="50" color="primary">Enviar</button>
+    </div>
+</form>
